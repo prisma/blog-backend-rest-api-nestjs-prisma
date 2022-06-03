@@ -16,7 +16,7 @@ import { ArticleEntity } from './entities/article.entity';
 @Controller('articles')
 @ApiTags('articles')
 export class ArticlesController {
-  constructor(private readonly articlesService: ArticlesService) {}
+  constructor(private readonly articlesService: ArticlesService) { }
 
   @Post()
   @ApiCreatedResponse({ type: ArticleEntity })
@@ -43,7 +43,7 @@ export class ArticlesController {
   }
 
   @Patch(':id')
-  @ApiCreatedResponse({ type: ArticleEntity })
+  @ApiOkResponse({ type: ArticleEntity })
   update(@Param('id') id: string, @Body() updateArticleDto: UpdateArticleDto) {
     return this.articlesService.update(+id, updateArticleDto);
   }
